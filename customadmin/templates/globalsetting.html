@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+  <!-- Navbar -->
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+    navbar-scroll="true">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <h6 class="font-weight-bolder mb-0">GLOBAL SETTING</h6>
+      </nav>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card my-4">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+              <h6 class="text-white text-capitalize ps-3">Add Detail</h6>
+            </div>
+          </div>
+          <div class="container-fluid py-4">
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <form method="POST" action="{% url 'globalsetting' %}" enctype="multipart/form-data"
+                    class="table align-items-center mb-0">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label class="col-2 p-2">SiteName</label>
+                      <input type="text" class="col-7" name="name" value="{{ data.SiteName }}" required>
+                    </div>
+                      <div class="form-group">
+                      <label class="col-2 p-2">SiteContact:</label>
+                      <input type="text" class="col-7" name="contact" value="{{ data.SiteContact }}" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-2 p-2">SiteEmail:</label>
+                      <input type="email" class="col-7" name="email" value="{{ data.SiteEmail }}" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-2 p-2">SiteAddress</label>
+                      <input type="text" class="col-7" name="address" value="{{ data.SiteAddress }}" required>
+                    </div>
+                   <div class="form-group">
+                      <label class="col-2 p-2">Sitefacebooklink:</label>
+                      <input type="text" class="col-7" name="facebooklink" value="{{ data.Sitefacebooklink }}">
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                      <label class="col-2 p-2">Sitetwitterlink:</label>
+                      <input type="text" class="col-7" name="twitterlink" value="{{ data.Sitetwitterlink }}">
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="col-2 p-2">Sitelinkdinlink:</label>
+                      <input type="text" class="col-7" name="linkdinlink" value="{{ data.Sitelinkdinlink }}">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-2 p-2">Siteinstagram:</label>
+                      <input type="text" class="col-7" name="instagram" value="{{ data.Siteinstagram }}">
+                    </div>
+                    
+                    
+                    
+                    <div class="form-group">
+                      <label class="col-2 p-2">logo:</label>
+                      <input type="file" name="logo">
+                      <!-- {% if data.logo %} -->
+                      <img src="{{ data.logo.url }}" style="max-width: 20%; height: auto">
+                      <!-- {% endif %} -->
+                    </div>
+                   
+                    <div class="form-group">
+                      <label class="col-2 p-2">Brochure Name</label>
+                      <input type="text" class="col-7" name="brochure_name" value="{{ data.brochure_name }}" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-2 p-2">Brochure:</label>
+                      <input type="file" name="brochure">
+                      <!-- {% if data.brochure %} -->
+                      <a href="{{ data.brochure.url }}" target="_blank">{{ data.brochure }}
+                        {% comment %}
+                        <img src="{{ data.brochure.url }}" style="max-width: 20%; height: auto">
+                        {% endcomment %}
+                        <!-- {% endif %} -->
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" value="Submit" class="btn btn-primary offset-2 ">
+                    </div>
+                  </form>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
